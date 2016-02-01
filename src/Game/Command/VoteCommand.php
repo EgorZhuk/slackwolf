@@ -12,26 +12,26 @@ class VoteCommand extends Command
     public function init()
     {
         if ($this->channel[0] == 'D') {
-            throw new Exception("You may not !vote privately.");
+            throw new Exception("Больше двух говорят вслух. Нельзя головать (!vote) втихую.");
         }
 
         if (count($this->args) < 1) {
-            throw new InvalidArgumentException("Must specify a player");
+            throw new InvalidArgumentException("Выбери жертву.");
         }
 
         $this->game = $this->gameManager->getGame($this->channel);
 
         if ( ! $this->game) {
-            throw new Exception("No game in progress.");
+            throw new Exception("Что-то пошло не так. Кажется игра не началась.");
         }
 
         if ($this->game->getState() != GameState::DAY) {
-            throw new Exception("Voting occurs only during the day.");
+            throw new Exception("Слишком темно для голования, дождись утра.");
         }
 
         // Voter should be alive
         if ( ! $this->game->isPlayerAlive($this->userId)) {
-            throw new Exception("Can't vote if dead.");
+            throw new Exception("Мертвые лежат и не возникают.");
         }
 
         $this->args[0] = UserIdFormatter::format($this->args[0], $this->game->getOriginalPlayers());
@@ -41,7 +41,7 @@ echo $this->args[0];
                 && $this->args[0] != 'noone'
                 && $this->args[0] != 'clear') {
             echo 'not found';
-            throw new Exception("Voted player not found in game.");
+            throw new Exception("Не вижу такого чела, а он с какого района?");
         }
     }
 

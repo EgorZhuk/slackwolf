@@ -13,17 +13,17 @@ class LeaveCommand extends Command
     public function init()
     {
         if ($this->channel[0] == 'D') {
-            throw new Exception("Can't leave a game or lobby by direct message.");
+            throw new Exception("Нельзя сойти с поезда в личном сообщении.");
         }
 
         $this->game = $this->gameManager->getGame($this->channel);
 
         if ( ! $this->game) {
-            throw new Exception("No game in progress.");
+            throw new Exception("Что-то пошло не так. Кажется игра не началась.");
         }
         
         if ($this->game->getState() != GameState::LOBBY) { 
-            throw new Exception("Game in progress is not in lobby state.");
+            throw new Exception("Запись на рейс окончена.");
         }
     }
 
@@ -32,6 +32,6 @@ class LeaveCommand extends Command
         $this->game->removeLobbyPlayer($this->userId);
             
         $playersList = PlayerListFormatter::format($this->game->getLobbyPlayers());
-        $this->gameManager->sendMessageToChannel($this->game, "Current lobby: ".$playersList);    
+        $this->gameManager->sendMessageToChannel($this->game, "Мальчишки и девчонки, а так же их родители: ".$playersList);    
     }
 }

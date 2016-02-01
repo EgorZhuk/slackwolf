@@ -2,11 +2,11 @@
 
 class Role
 {
-    const VILLAGER = "Villager";
-    const SEER = "Seer";
-    const WEREWOLF = "Werewolf";
-    const BODYGUARD = "Bodyguard";
-    const TANNER = "Tanner";
-    const LYCAN = "Lycan";
-    const BEHOLDER = "Beholder";
+    const VILLAGER = "Крестьянин";
+    const SEER = "Смотритель";
+    const WEREWOLF = "Оборотень";
+    const BODYGUARD = "Телохранитель";
+    const TANNER = "Таксидермист";
+    const LYCAN = "Ликан";
+    const BEHOLDER = "Зритель";
 }

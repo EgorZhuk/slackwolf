@@ -52,13 +52,13 @@ class OptionsManager
     
     public function __construct()
     {
-        $this->options[] = new Option(OptionName::changevote, OptionType::Bool, "on", "When enabled votes can be changed until the final vote is cast.");
-        $this->options[] = new Option(OptionName::no_lynch, OptionType::Bool, "on", "When enabled townsfolk can vote not to lynch anybody.");
-        $this->options[] = new Option(OptionName::role_seer, OptionType::Bool, "on", "Use Seer role in random games.");
-        $this->options[] = new Option(OptionName::role_tanner, OptionType::Bool, "on", "Use Tanner role in random games.");
-        $this->options[] = new Option(OptionName::role_lycan, OptionType::Bool, "on", "Use Lycan role in random games.");
-        $this->options[] = new Option(OptionName::role_beholder, OptionType::Bool, "on", "Use Beholder role in random games.");
-        $this->options[] = new Option(OptionName::role_bodyguard, OptionType::Bool, "on", "Use Bodyguard role in random games.");
+        $this->options[] = new Option(OptionName::changevote, OptionType::Bool, "on", "Если включено, то можно менять решение до конца голосования.");
+        $this->options[] = new Option(OptionName::no_lynch, OptionType::Bool, "on", "Если включено то крестьяне могут никого не убивать.");
+        $this->options[] = new Option(OptionName::role_seer, OptionType::Bool, "on", "Добавлять Смотрителя в случайные игры.");
+        $this->options[] = new Option(OptionName::role_tanner, OptionType::Bool, "on", "Добавлять Таксидермиста в случайные игры.");
+        $this->options[] = new Option(OptionName::role_lycan, OptionType::Bool, "on", "Добавлять Ликана в случайные игры.");
+        $this->options[] = new Option(OptionName::role_beholder, OptionType::Bool, "on", "Добавлять Зрителя в случайные игры.");
+        $this->options[] = new Option(OptionName::role_bodyguard, OptionType::Bool, "on", "Добавлять Телохранителя в случайные игры.");
 
         $this->loadOptions();
     }

@@ -84,9 +84,9 @@ class Slackwolf
         /*
          * Connect to Slack
          */
-        echo "Connecting...\r\n";
+        echo "Подключаюсь...\r\n";
         $client->connect()->then(function() {
-            echo "Connected.\n";
+            echo "Готово.\n";
         }, function(ConnectionException $e) {
             echo $e->getMessage();
             exit();
