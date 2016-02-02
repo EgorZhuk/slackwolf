@@ -356,11 +356,13 @@ class GameManager
         $roleList = RoleListFormatter::format($game->getLivingPlayers());
 
         $msg = ":wolf: Новая игра в Оборотня начинается! Если не знаешь правил пиши !help.\r\n\r\n";
+        $msg .= "ВАЖНО! Главное разобраться какие сообщения писать в общий чат, а какие в личку боту.\r\n\r\n";
+        $msg .= "Если кратко: все действия, связанные с ролями идут в личку. Голосование днем и обсуждение - в общий чат. \r\n\r\n";
         $msg .= "Игроки: {$playerList}\r\n";
         $msg .= "Возможные роли: {$game->getRoleStrategy()->getRoleListMsg()}\r\n\r\n";
 
         if ($this->optionsManager->getOptionValue(OptionName::role_seer)) {
-            $msg .= ":crescent_moon: :zzz: Наступает ночь, крестьяне выпили чарку, съели шкварку и идут спать.";
+            $msg .= ":crescent_moon: :zzz: Наступает ночь, крестьяне выпили чарку, съели шкварку и идут спать. ";
             $msg .= "Игра начнется как только Смотритель выберет кого-то.";
         }
         $this->sendMessageToChannel($game, $msg);
