@@ -32,13 +32,13 @@ class StartCommand extends Command
                 $loadPlayers = false;
                 if (count($this->args) > 0 && count($game->getLobbyPlayers(0)) > 0) {
                     $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client) {
-                        $client->send('Запись на рейс отурыта, тебе нужно закончить текущую игру (!end) прежде чем начать новую.', $channel);
+                        $client->send('Запись на игру открыта, тебе нужно закончить текущую игру (!end) прежде чем начать новую.', $channel);
                     });
                     return;
                 }
             } else {
                 $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client) {
-                    $client->send('Запись на рейс окончена.', $channel);
+                    $client->send('Запись на игру окончена.', $channel);
                 });
                 return;
             }

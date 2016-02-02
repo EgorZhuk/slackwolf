@@ -35,7 +35,7 @@ class DeadCommand extends Command
         $playersList = PlayerListFormatter::format($this->game->getDeadPlayers());
         if (empty($playersList))
         {
-            $this->gameManager->sendMessageToChannel($this->game, "Все еще 10 негритят, но это ненадолго.");
+            $this->gameManager->sendMessageToChannel($this->game, "Пока все живы.");
         }
         else
         {

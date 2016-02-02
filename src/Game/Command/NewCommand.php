@@ -28,7 +28,7 @@ class NewCommand extends Command
             $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client, $gameManager) {
                 $game = $gameManager->getGame($this->channel);
                 if ($game->getState == GameState::LOBBY) {
-                    $client->send('Уже объявлена посадка на рейс. Пиши !join чтобы сыграть в этой игре.', $channel);
+                    $client->send('Уже объявлена регистрация на новую игру. Пиши !join чтобы сыграть в этой игре.', $channel);
                 }
                 else {
                     $client->send('Запись на рейс окончена.', $channel);
@@ -41,7 +41,7 @@ class NewCommand extends Command
         try {
             $gameManager->newGame($message->getChannel(), [], new RoleStrategy\Classic());        
             $game = $gameManager->getGame($message->getChannel());
-            $this->gameManager->sendMessageToChannel($game, "Объявлена посадка на рейс. Пиши !join чтобы сыграть в этой игре.");
+            $this->gameManager->sendMessageToChannel($game, "Объявлена регистрация на новую игру. Пиши !join чтобы сыграть в этой игре.");
             $userId = $this->userId;
 
             $this->client->getChannelGroupOrDMByID($this->channel)
@@ -57,7 +57,7 @@ class NewCommand extends Command
                 });
 
             $playersList = PlayerListFormatter::format($game->getLobbyPlayers());
-            $this->gameManager->sendMessageToChannel($game, "Мальчишки и девчонки, а так же их родители: ".$playersList);
+            $this->gameManager->sendMessageToChannel($game, "Список игроков: ".$playersList);
         } catch (Exception $e) {
             $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client,$e) {
                 $client->send($e->getMessage(), $channel);

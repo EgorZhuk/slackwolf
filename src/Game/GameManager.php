@@ -333,9 +333,9 @@ class GameManager
                     if ($player->role == Role::WEREWOLF) {
                         if ($game->getNumRole(Role::WEREWOLF) > 1) {
                             $werewolves = PlayerListFormatter::format($game->getPlayersOfRole(Role::WEREWOLF));
-                            $client->send("Сегодня Оборотни: {$werewolves}", $dmc);
+                            $client->send("В этой игре Оборотни: {$werewolves}", $dmc);
                         } else {
-                            $client->send("Сегодня ты единственный Оборотень.", $dmc);
+                            $client->send("В этой игре ты единственный Оборотень.", $dmc);
                         }
                     }
 
@@ -374,7 +374,7 @@ class GameManager
     {
         $remainingPlayers = PlayerListFormatter::format($game->getLivingPlayers());
 
-        $dayBreakMsg = ":sunrise: Прокричал петух, пора вставать, а то свиньи не кормлены.\r\n";
+        $dayBreakMsg = ":sunrise: Прокричал петух, пора вставать, у тебя свиньи не кормлены.\r\n";
         $dayBreakMsg .= "Перепись населения: {$remainingPlayers}\r\n\r\n";
         $dayBreakMsg .= "Крестьяне, пора снимать с Оборотней шкуры! Пиши !vote @username чтобы посадить плохиша на вилы.";
         if ($this->optionsManager->getOptionValue(OptionName::changevote))

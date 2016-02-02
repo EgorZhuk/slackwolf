@@ -22,7 +22,7 @@ class JoinCommand extends Command
         }
         
         if ($this->game->getState() != GameState::LOBBY) { 
-            throw new Exception("Запись на рейс окончена.");
+            throw new Exception("Запись на игру окончена.");
         }
     }
 
@@ -44,6 +44,6 @@ class JoinCommand extends Command
             });
             
         $playersList = PlayerListFormatter::format($this->game->getLobbyPlayers());
-        $this->gameManager->sendMessageToChannel($this->game, "Мальчишки и девчонки, а так же их родители: ".$playersList);
+        $this->gameManager->sendMessageToChannel($this->game, "Список игроков: ".$playersList);
     }
 }
